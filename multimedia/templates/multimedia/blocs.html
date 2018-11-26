@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% load embed_video_tags %}
+{% block title %} {% trans 'Multimedia bloc' %} {% endblock %}
+
+{% block head %}
+  <link href="{% static 'css/articles.css' %}" rel="stylesheet">
+
+  <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+   <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+{% endblock head %}
+
+{% block main %}
+  <div class="page-header">
+    <a href="{% url 'write' %}" class="btn btn-primary pull-right">
+      <span class="glyphicon glyphicon-pencil"></span> {% trans 'Write Multimedias' %}
+    </a>
+    <a href="{% url 'drafts' %}" class="btn btn-default pull-right" style="margin-right: .8em">{% trans 'Drafts' %}</a>
+    <h1>{% trans 'Categories' %}</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <section class="articles">
+        {% for bloc in blocs %}
+          {% include 'multimedia/partial_bloc.html' with bloc=bloc is_blocs=forloop %}
+        {% empty %}
+          <h4 class="no-data">{% trans 'There is no published bloc yet' %}. <a href="{% url 'write' %}">{% trans 'Be the first one to publish' %}!</a></h4>
+        {% endfor %}
+      </section>
+    </div>
+    <div class="col-md-2 popular-tags">
+      <h4>{% trans 'Popular Tags' %}</h4>
+      {% for tag, count in popular_tags %}
+        <a href="{% url 'tag' tag %}"><span class="label label-default">{{ count }} {{ tag }}</span></a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% include 'paginator.html' with paginator=bloc %}
+    </div>
+  </div>
+{% endblock main %}
