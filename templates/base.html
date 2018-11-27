@@ -92,18 +92,25 @@
 								   <span class="mini-click-non">{% trans 'Articles' %}</span>
 								</a>
                         </li>
+
+                        <li>
+                            <a title="Landing Page" href="{% url 'feeds' %}" aria-expanded="false">
+                                <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
+                                <span class="mini-click-non">{% trans 'News' %}</span></a>
+                        </li>
+
                         <li>
                             <a title="Landing Page" href="{% url 'multimedias' %}" aria-expanded="false">
                                 <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
                                 <span class="mini-click-non">{% trans 'Multimedia' %}</span></a>
                         </li>
                         <li>
-                            <a title="Landing Page" href="{% url 'multimedias' %}" aria-expanded="false">
+                            <a title="Landing Page"  href="{% url 'network' %}" aria-expanded="false">
                                 <span class="educate-icon educate-professor icon-wrap" aria-hidden="true"></span> 
                                 <span class="mini-click-non">{% trans 'Utilisateurs' %}</span></a>
                         </li>
                         <li id="removable">
-                            <a class="Landing Page" href="#" aria-expanded="false">
+                            <a class="Landing Page" href="{% url 'logout' %}" aria-expanded="false">
                                 <span class="educate-icon educate-pages icon-wrap"></span> 
                                 <span class="mini-click-non">Deconnexion</span></a>
                         </li>
@@ -204,9 +211,9 @@
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>Pofil</a>
                                                         </li>
-                                                        <li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Parametres</a>
+                                                        <li><a href="{% url 'settings' %}"><span class="edu-icon edu-settings author-log-ic"></span>Parametres</a>
                                                         </li>
-                                                        <li><a href="#"><span class="edu-icon edu-locked author-log-ic"></span>Deconnexion</a>
+                                                        <li><a  href="{% url 'logout' %}"><span class="edu-icon edu-locked author-log-ic"></span>Deconnexion</a>
                                                         </li>
                                                     </ul>
                                                 </li>
